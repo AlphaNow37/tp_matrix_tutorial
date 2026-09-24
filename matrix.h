@@ -21,4 +21,6 @@ void matrix_print(FILE *f, matrix m);
 matrix matrix_mul_scalar(matrix m, scalar lambda);
 matrix transposition(matrix m);
 
+void matrix_pretty_print(FILE *f, matrix m);
+
 #endif /* MATRIX_H */

@@ -19,6 +19,7 @@ int main(void)
 
   // Display the matrix r
   matrix_print(stdout, r);
+  matrix_pretty_print(stdout, r);
   /* The result should be:
    *  43.00   1.00   1.00 
        1.00   2.00   1.00 

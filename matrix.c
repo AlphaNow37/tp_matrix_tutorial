@@ -92,3 +92,13 @@ matrix transposition(matrix m) {
   }
   return res;
 }
+
+matrix matrix_aleatoire(int n1, int n2) {
+  matrix res = matrix_create(n1, n2, 0);
+  for(int i = 0; i<n1; i++) {
+    for(int j=0; j<n2; j++) {
+      *matrix_get(res, i, j) = random();
+    }
+  }
+  return res;
+} 

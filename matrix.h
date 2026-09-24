@@ -20,4 +20,6 @@ matrix matrix_add(matrix m, matrix n);
 void matrix_print(FILE *f, matrix m);
 matrix transposition(matrix m);
 
+void matrix_pretty_print(FILE *f, matrix m);
+
 #endif /* MATRIX_H */

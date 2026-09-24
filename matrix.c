@@ -92,3 +92,27 @@ matrix transposition(matrix m) {
   }
   return res;
 }
+
+void matrix_pretty_print(FILE *f, matrix m) {
+	fprintf(f, "┌ ");
+	for (int i = 0; i < m.n1; i++) {
+		fprintf(f, "       ");
+	}
+	fprintf(f, "┐\n");
+	for (int j = 0; j < m.n2; j++) {
+		fprintf(f, "│ ");
+		for (int i = 0; i < m.n1; i++) {
+			fprintf(
+				f, 
+				"%6.1f ",
+				*matrix_get(m, i, j)
+			);
+		}
+		fprintf(f, "│\n");
+	}
+	fprintf(f, "└ ");
+	for (int i = 0; i < m.n1; i++) {
+		fprintf(f, "       ");
+	}
+	fprintf(f, "┘\n");
+}

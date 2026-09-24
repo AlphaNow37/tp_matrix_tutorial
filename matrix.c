@@ -101,6 +101,16 @@ matrix transposition(matrix m) {
   return res;
 }
 
+matrix mult_scalar(matrix m, scalar l) {
+  matrix res = matrix_create(m.n1, m.n2, 0);
+  for(int i = 0; i<m.n1; i++) {
+    for(int j = 0; j<m.n2; j++) {
+      *matrix_get(res, i, j) = l*(*matrix_get(m, i, j));
+    }
+  }
+  return res;
+}
+
 void matrix_pretty_print(FILE *f, matrix m) {
 	fprintf(f, "┌ ");
 	for (int i = 0; i < m.n1; i++) {
@@ -123,4 +133,51 @@ void matrix_pretty_print(FILE *f, matrix m) {
 		fprintf(f, "       ");
 	}
 	fprintf(f, "┘\n");
+}
+
+matrix mult_matrix(matrix m, matrix n) {
+  matrix res = matrix_create(m.n1, n.n2, 0);
+  if(m.n2 != n.n1) {
+    res.ok = false;
+  } else {
+    for(int i = 0; i<m.n1; i++) {
+      for(int j =0; j<n.n2; j++) {
+        for(int k = 0; k<m.n2; k++) {
+          *matrix_get(res, i, j) += *matrix_get(m, i, k)*(*matrix_get(n, k, j));
+        }
+      }
+    }
+  }
+  return res;
+}
+
+void test_mult_scalar() {
+  matrix m = matrix_create(4, 5, 1);
+  matrix res = mult_scalar(m, 25);
+
+  for(int i = 0; i<m.n1; i++) {
+    for(int j = 0; j<m.n2; j++) {
+      if(*matrix_get(res, i, j) != 25) {
+        printf("Test échoué :\nValeur attendue : 25\nValeur reçue : %d", *matrix_get(res, i, j));
+      }
+    }
+  }
+  matrix_destroy(res);
+  matrix_destroy(m);
+}
+
+matrix fast_expon(matrix m, unsigned n) { //n>=1
+  if(n <= 1)
+    return m;
+  if(n%2) {
+    matrix res = fast_expon(m, n-1);
+    matrix res2 = mult_matrix(res, m);
+    matrix_detroy(m);
+    matrix_detroy(res);
+    return res2;
+  } else {
+    matrix res = mult_matrix(m, m);
+    matrix_destroy(m);
+    return fast_expon(res, n/2);
+  }
 }

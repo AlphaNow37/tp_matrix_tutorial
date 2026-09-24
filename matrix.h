@@ -20,7 +20,10 @@ matrix matrix_add(matrix m, matrix n);
 void matrix_print(FILE *f, matrix m);
 matrix matrix_mul_scalar(matrix m, scalar lambda);
 matrix transposition(matrix m);
-
 void matrix_pretty_print(FILE *f, matrix m);
+matrix mult_scalar(matrix m, scalar l);
+matrix mult_matrix(matrix m, matrix n);
+void test_mult_scalar();
+matrix fast_expon(matrix m, unsigned n);
 
 #endif /* MATRIX_H */

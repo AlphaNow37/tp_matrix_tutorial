@@ -172,8 +172,8 @@ matrix fast_expon(matrix m, unsigned n) { //n>=1
   if(n%2) {
     matrix res = fast_expon(m, n-1);
     matrix res2 = mult_matrix(res, m);
-    matrix_detroy(m);
-    matrix_detroy(res);
+    matrix_destroy(m);
+    matrix_destroy(res);
     return res2;
   } else {
     matrix res = mult_matrix(m, m);

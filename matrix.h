@@ -7,9 +7,9 @@
 typedef double scalar;
 
 typedef struct matrix {
-  unsigned n1, n2;
-  bool ok;
-  scalar *data;
+    unsigned n1, n2;
+    bool ok;
+    scalar *data;
 } matrix;
 
 matrix matrix_create(unsigned n1, unsigned n2, scalar v);

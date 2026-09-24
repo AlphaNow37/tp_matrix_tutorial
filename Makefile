@@ -5,7 +5,7 @@ TARGET=main_matrix main_matrix_static test_matrix
 all: $(TARGET)
 
 # Compiler used
-CC=clang
+CC=gcc
 
 # Compiler and linker flags
 CFLAGS=-Wall -Wextra -pedantic -std=c11 -fPIC $(DEPFLAGS)

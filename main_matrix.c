@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "matrix.h"
 
-int main(void)
+long main(void)
 {
   // We consider matrix of double's
 
@@ -28,6 +28,6 @@ int main(void)
   matrix_destroy(m);
   matrix_destroy(n);
   matrix_destroy(r);
-
+// gdgdgdgddgdgd
   return EXIT_SUCCESS;
 }

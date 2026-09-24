@@ -101,4 +101,22 @@ matrix matrix_aleatoire(int n1, int n2) {
     }
   }
   return res;
-} 
+}
+
+matrix matrix_proust(int n1, int n2) {
+  FILE* f = fopen("Proust.txt", "r");
+  matrix res = matrix_create(n1, n2, 0);
+  for(int i = 0; i<n1; i++) {
+    for(int j=0; j<n2; j++) {
+      char mot[81] = {0};
+      fscanf(f, "%s ", &mot);
+      int somme = 0;
+      for(int k = 0; k<80; k++) {
+        somme += mot[k];
+      }
+      *matrix_get(res, i, j) = somme;
+    }
+  }
+  fclose(f);
+  return res;
+}

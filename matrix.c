@@ -109,3 +109,17 @@ matrix mult_matrix(matrix m, matrix n) {
   return res;
 }
 
+void test_mult_scalar() {
+  matrix m = matrix_create(4, 5, 1);
+  matrix res = mult_scalar(m, 25);
+
+  for(int i = 0; i<m.n1; i++) {
+    for(int j = 0; j<m.n2; j++) {
+      if(*matrix_get(res, i, j) != 25) {
+        printf("Test échoué :\nValeur attendue : 25\nValeur reçue : %d", *matrix_get(res, i, j));
+      }
+    }
+  }
+  
+  matrix_destroy(m);
+}

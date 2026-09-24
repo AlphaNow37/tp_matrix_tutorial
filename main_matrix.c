@@ -28,6 +28,6 @@ long main(void)
   matrix_destroy(m);
   matrix_destroy(n);
   matrix_destroy(r);
-// gdgdgdgd
+// gdgdgdgddgdgd
   return EXIT_SUCCESS;
 }

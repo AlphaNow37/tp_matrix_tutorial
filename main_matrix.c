@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "matrix.h"
 
-int Main(void)
+long main(void)
 {
   // We consider matrix of double's
 

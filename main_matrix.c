@@ -30,5 +30,7 @@ int main(void)
   matrix_destroy(n);
   matrix_destroy(r);
 
+  test_mult_scalar();
+
   return EXIT_SUCCESS;
 }

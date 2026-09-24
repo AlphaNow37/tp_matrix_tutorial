@@ -120,6 +120,6 @@ void test_mult_scalar() {
       }
     }
   }
-  
+  matrix_destroy(res);
   matrix_destroy(m);
 }

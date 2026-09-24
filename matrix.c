@@ -91,3 +91,12 @@ matrix matrix_mul_scalar(matrix m, scalar lambda) {
 
     return res;
 }
+matrix transposition(matrix m) {
+  matrix res = matrix_create(m.n2, m.n1, 0);
+  for(int i = 0; i<m.n2; i++) {
+    for(int j=0; j<m.n1; j++) {
+      *matrix_get(res, i, j) = *matrix_get(m, j, i);
+    }
+  }
+  return res;
+}

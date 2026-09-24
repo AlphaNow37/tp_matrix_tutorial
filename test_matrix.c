@@ -56,4 +56,13 @@ UTEST(matrix_get, wrong) {
   ASSERT_TRUE(matrix_get(m, 0, 0)==NULL);
 }
 
+UTEST(matrix_mul_scalar, simple) {
+    matrix m = matrix_identity(10);
+    matrix m2 = matrix_mul_scalar(m, 10.);
+    ASSERT_NEAR(*matrix_get(m2, 1, 1), 10., 0.0001);
+    ASSERT_NEAR(*matrix_get(m2, 1, 5), 0., 0.0001);
+    matrix_destroy(m);
+    matrix_destroy(m2);
+}
+
 UTEST_MAIN()  

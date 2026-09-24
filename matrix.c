@@ -83,6 +83,14 @@ void matrix_print(FILE *f, matrix m)
   }
 }
 
+matrix matrix_mul_scalar(matrix m, scalar lambda) {
+    matrix res = matrix_create(m.n1, m.n2, 0.);
+    for (unsigned i = 0; i < m.n1; ++i)
+        for (unsigned j = 0; j < m.n2; ++j)
+            *matrix_get(res, i, j) = *matrix_get(m, i, j) * lambda;
+
+    return res;
+}
 matrix transposition(matrix m) {
   matrix res = matrix_create(m.n2, m.n1, 0);
   for(int i = 0; i<m.n2; i++) {
@@ -93,12 +101,26 @@ matrix transposition(matrix m) {
   return res;
 }
 
-matrix matrix_aleatoire(int n1, int n2) {
-  matrix res = matrix_create(n1, n2, 0);
-  for(int i = 0; i<n1; i++) {
-    for(int j=0; j<n2; j++) {
-      *matrix_get(res, i, j) = random();
-    }
-  }
-  return res;
-} 
+void matrix_pretty_print(FILE *f, matrix m) {
+	fprintf(f, "┌ ");
+	for (int i = 0; i < m.n1; i++) {
+		fprintf(f, "       ");
+	}
+	fprintf(f, "┐\n");
+	for (int j = 0; j < m.n2; j++) {
+		fprintf(f, "│ ");
+		for (int i = 0; i < m.n1; i++) {
+			fprintf(
+				f, 
+				"%6.1f ",
+				*matrix_get(m, i, j)
+			);
+		}
+		fprintf(f, "│\n");
+	}
+	fprintf(f, "└ ");
+	for (int i = 0; i < m.n1; i++) {
+		fprintf(f, "       ");
+	}
+	fprintf(f, "┘\n");
+}

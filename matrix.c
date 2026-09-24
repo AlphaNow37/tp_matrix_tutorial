@@ -82,12 +82,3 @@ void matrix_print(FILE *f, matrix m)
     }
   }
 }
-
-matrix matrix_mul_scalar(matrix m, scalar lambda) {
-    matrix res = matrix_create(m.n1, m.n2, 0.);
-    for (unsigned i = 0; i < m.n1; ++i)
-        for (unsigned j = 0; j < m.n2; ++j)
-            *matrix_get(res, i, j) = *matrix_get(m, i, j) * lambda;
-
-    return res;
-}

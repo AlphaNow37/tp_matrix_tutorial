@@ -123,3 +123,19 @@ void test_mult_scalar() {
   matrix_destroy(res);
   matrix_destroy(m);
 }
+
+matrix fast_expon(matrix m, unsigned n) { //n>=1
+  if(n <= 1)
+    return m;
+  if(n%2) {
+    matrix res = fast_expon(m, n-1);
+    matrix res2 = mult_matrix(res, m);
+    matrix_detroy(m);
+    matrix_detroy(res);
+    return res2;
+  } else {
+    matrix res = mult_matrix(m, m);
+    matrix_destroy(m);
+    return fast_expon(res, n/2);
+  }
+}

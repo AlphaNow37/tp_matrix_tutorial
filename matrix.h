@@ -21,6 +21,6 @@ void matrix_print(FILE *f, matrix m);
 matrix mult_scalar(matrix m, scalar l);
 matrix mult_matrix(matrix m, matrix n);
 void test_mult_scalar();
-
+matrix fast_expon(matrix m, unsigned n);
 
 #endif /* MATRIX_H */

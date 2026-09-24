@@ -82,3 +82,30 @@ void matrix_print(FILE *f, matrix m)
     }
   }
 }
+
+matrix mult_scalar(matrix m, scalar l) {
+  matrix res = matrix_create(m.n1, m.n2, 0);
+  for(int i = 0; i<m.n1; i++) {
+    for(int j = 0; j<m.n2; j++) {
+      *matrix_get(res, i, j) = l*(*matrix_get(m, i, j));
+    }
+  }
+  return res;
+}
+
+matrix mult_matrix(matrix m, matrix n) {
+  matrix res = matrix_create(m.n1, n.n2, 0);
+  if(m.n2 != n.n1) {
+    res.ok = false;
+  } else {
+    for(int i = 0; i<m.n1; i++) {
+      for(int j =0; j<n.n2; j++) {
+        for(int k = 0; k<m.n2; k++) {
+          *matrix_get(res, i, j) += *matrix_get(m, i, k)*(*matrix_get(n, k, j));
+        }
+      }
+    }
+  }
+  return res;
+}
+
